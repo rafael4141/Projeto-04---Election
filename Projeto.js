@@ -13,9 +13,9 @@ function autorizaVoto(dataNascimento) {
 
 function validaData(dataNascimento) {
   let idade = new Date().getFullYear() - dataNascimento[2];
-  console.log(idade)
+  console.log(idade);
   if (idade > new Date().getFullYear()) {
-    console.log(idade > new Date().getFullYear())
+    console.log(idade > new Date().getFullYear());
     console.log("Idade invalida!!");
     dataNascimento = prompt("Digite sua data de nascimento novamente: ");
     validaData(dataNascimento.split("/"));
@@ -55,6 +55,8 @@ function votacao(autorizacao, voto) {
       }
       votacao(autorizacao, voto);
     }
+  } else {
+    console.log("Você não pode votar!");
   }
 }
 

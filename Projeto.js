@@ -14,8 +14,7 @@ function autorizaVoto(dataNascimento) {
 function validaData(dataNascimento) {
   let idade = new Date().getFullYear() - dataNascimento[2];
   console.log(idade);
-  if (idade > new Date().getFullYear()) {
-    console.log(idade > new Date().getFullYear());
+  if ((dataNascimento[0] > 31) || (dataNascimento[1] > 12) || (dataNascimento[2] > new Date().getFullYear())) {
     console.log("Idade invalida!!");
     dataNascimento = prompt("Digite sua data de nascimento novamente: ");
     validaData(dataNascimento.split("/"));
@@ -55,9 +54,7 @@ function votacao(autorizacao, voto) {
       }
       votacao(autorizacao, voto);
     }
-  } else {
-    console.log("Você não pode votar!");
-  }
+  } 
 }
 
 function exibirResultados() {
@@ -96,11 +93,14 @@ while (continuar[0].toUpperCase() === "S") {
 
   const autorizacao = autorizaVoto(dataNascimento);
 
-  const voto = prompt(
-    "1 = Candidato 1\n2 = Candidato 2\n3 = Candidato 3\n4 = Voto Nulo\n5 = Voto em Branco\nDigite seu Voto: "
-  );
-
-  votacao(autorizacao, voto);
+  if (autorizacao != "Negado") {
+    const voto = prompt(
+      "1 = Candidato 1\n2 = Candidato 2\n3 = Candidato 3\n4 = Voto Nulo\n5 = Voto em Branco\nDigite seu Voto: "
+      );
+    votacao(autorizacao, voto);
+  } else {
+    console.log("Você não pode votar!");
+  }
   continuar = prompt("Deseja continuar? [S/N] ");
   while (
     continuar[0].toUpperCase() != "S" &&

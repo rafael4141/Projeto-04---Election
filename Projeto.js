@@ -1,6 +1,6 @@
 function autorizaVoto(dataNascimento) {
   const idade = validaData(dataNascimento.split("/"));
-  if (idade > 75) {
+  if (idade > 70) {
     return "Opcional";
   } else if (idade > 17) {
     return "Obrigatório";
